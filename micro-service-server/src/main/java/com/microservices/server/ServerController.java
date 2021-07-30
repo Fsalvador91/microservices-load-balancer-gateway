@@ -18,25 +18,25 @@ public class ServerController {
     public ResponseModel retrieveTechInfo(@PathVariable("platform") String platform) {
         ResponseModel responseModel = new ResponseModel();
 
-        if (platform.equalsIgnoreCase("Java")) {
-            responseModel.setTittle("Tech Stack");
-            responseModel.setPlatform("Java");
-            responseModel.setUsedFor("Secured Web Services");
-        } else if (platform.equalsIgnoreCase("Python")) {
-            responseModel.setTittle("Technology Stack");
-            responseModel.setPlatform("Python");
-            responseModel.setUsedFor("Machine Learning");
-        } else {
-            responseModel.setTittle("Technology Stack");
-            responseModel.setPlatform(platform);
-            responseModel.setUsedFor("Unknown platform");
+        switch (platform) {
+            case "Java":
+                responseModel.setTittle("Tech Stack");
+                responseModel.setPlatform("Java");
+                responseModel.setUsedFor("Secured Web Services");
+                break;
+            case "Python":
+                responseModel.setTittle("Technology Stack");
+                responseModel.setPlatform("Python");
+                responseModel.setUsedFor("Machine Learning");
+                break;
+            default:
+                responseModel.setTittle("Technology Stack");
+                responseModel.setPlatform(platform);
+                responseModel.setUsedFor("Unknown platform");
         }
 
         responseModel.setServerPort(Short.parseShort(environment.getProperty("local.server.port")));
 
         return responseModel;
-
     }
-
-    ;
 }

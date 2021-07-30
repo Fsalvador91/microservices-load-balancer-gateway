@@ -1,0 +1,5 @@
+# Project exclude paths
+/api-gateway/target/
+/eureka-server/target/
+/micro-service-client/target/
+/micro-service-server/target/
